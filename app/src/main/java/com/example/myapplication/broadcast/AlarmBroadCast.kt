@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.media.RingtoneManager
 import android.util.Log
 import androidx.core.app.ActivityCompat
@@ -15,6 +16,7 @@ import com.example.myapplication.AlarmActivity
 import com.example.myapplication.R
 import com.example.myapplication.constant.Constants.CHANEL_ID
 import com.example.myapplication.constant.Constants.NOTIFICATION_ID
+import com.example.myapplication.constant.Constants.openComplete
 
 
 class AlarmBroadCast : BroadcastReceiver() {
@@ -22,6 +24,7 @@ class AlarmBroadCast : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         Log.d("sjk","wake up")
         val alarmIntent = Intent(context,AlarmActivity::class.java)
+        alarmIntent.putExtra(openComplete, openComplete)
         intent?.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK )
         val pendingIntent = PendingIntent.getActivity(context,0,alarmIntent,
             PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
@@ -40,6 +43,8 @@ class AlarmBroadCast : BroadcastReceiver() {
 
 
         getNotificationBuilder(context,pendingIntent)?.let {
+            it.setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            it.setLights(Color.RED, 3000, 3000)
             nManager?.notify(NOTIFICATION_ID,
                 it.build())
             notifyWithSound(context)

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TimePicker
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.myapplication.AlarmActivity
 import com.example.myapplication.alarm.ControlAlarm
 import com.example.myapplication.databinding.FragmentSetAlarmBinding
 
@@ -70,6 +71,7 @@ class SetAlarmFragment : Fragment() {
     }
 
     private fun setAlarmOnClock() {
+        (activity as AlarmActivity).createNotificationChanel()
         context?.let { ControlAlarm(it).setAlarmTime(hour, min) }
     }
 }
