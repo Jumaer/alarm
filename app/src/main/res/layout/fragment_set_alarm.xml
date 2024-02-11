@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SetAlarmFragment">
+
+    <TimePicker
+        android:id="@+id/alarmClock"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="0dp"
+        android:backgroundTint="@color/white"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:timePickerMode="clock"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/setAlarm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_48sdp"
+        android:layout_marginVertical="@dimen/_40sdp"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/setAlarm"
+        android:enabled="false"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintEnd_toEndOf="@+id/alarmClock"
+        app:layout_constraintStart_toStartOf="@+id/alarmClock"
+        app:layout_constraintTop_toBottomOf="@+id/alarmClock" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cancelAlarm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_48sdp"
+        android:layout_marginVertical="@dimen/_16sdp"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/cancelAlarm"
+        android:enabled="false"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintEnd_toEndOf="@+id/alarmClock"
+        app:layout_constraintStart_toStartOf="@+id/alarmClock"
+        app:layout_constraintTop_toBottomOf="@+id/setAlarm" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

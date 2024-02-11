@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="chanel_alarm_manager_title">Hello ! Time Up</string>
+    <string name="setAlarm">Set Alarm</string>
+    <string name="selectAlarm">Select Alarm</string>
+    <string name="your_alarm_rang_successfully">Your alarm rang successfully. \n You can reschedule an alarm again</string>
+    <string name="reschedule">reschedule</string>
+    <string name="chanel_alarm_manager_hint">Chanel for alarm manager.</string>
+    <string name="cancelAlarm">Cancel Alarm</string>
+</resources>
