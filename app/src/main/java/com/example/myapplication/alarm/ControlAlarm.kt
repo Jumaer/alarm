@@ -5,7 +5,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import android.widget.Toast
 import com.example.myapplication.broadcast.AlarmBroadCast
 import java.util.Calendar
 
@@ -18,7 +17,12 @@ class ControlAlarm {
     constructor(context: Context) {
         alarmMgr = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmIntent = Intent(context, AlarmBroadCast::class.java).let { intent ->
-            PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getBroadcast(
+                context,
+                0,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            )
         }
     }
 
@@ -37,10 +41,12 @@ class ControlAlarm {
             alarmIntent
         )
 
-       Log.d("sjk","set Alarm")
+        Log.d("sjk", "set Alarm")
     }
 
-    fun cancelAlarm(){
+    fun cancelAlarm() {
         alarmMgr?.cancel(alarmIntent)
     }
+
+
 }

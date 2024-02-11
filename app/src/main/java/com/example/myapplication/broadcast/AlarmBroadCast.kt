@@ -6,9 +6,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.RingtoneManager
 import android.util.Log
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -16,6 +15,7 @@ import com.example.myapplication.AlarmActivity
 import com.example.myapplication.R
 import com.example.myapplication.constant.Constants.CHANEL_ID
 import com.example.myapplication.constant.Constants.NOTIFICATION_ID
+
 
 class AlarmBroadCast : BroadcastReceiver() {
 
@@ -42,7 +42,18 @@ class AlarmBroadCast : BroadcastReceiver() {
         getNotificationBuilder(context,pendingIntent)?.let {
             nManager?.notify(NOTIFICATION_ID,
                 it.build())
+            notifyWithSound(context)
         }
+
+    }
+
+    private fun notifyWithSound(context: Context) {
+        var alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+        if (alarmUri == null) {
+            alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        }
+        val ringtone = RingtoneManager.getRingtone(context, alarmUri)
+        ringtone.play()
     }
 
     private fun getNotificationBuilder(context: Context?, pendingIntent: PendingIntent?): NotificationCompat.Builder? {

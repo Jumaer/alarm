@@ -66,6 +66,7 @@ class SetAlarmFragment : Fragment() {
     private fun selectAlarmFromClock(hourTime: Int, minute: Int) {
         hour = hourTime
         min = minute
+        Log.d("sjk","$hour, $min")
     }
 
     private fun setAlarmOnClock() {
