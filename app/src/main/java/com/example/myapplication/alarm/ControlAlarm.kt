@@ -26,7 +26,7 @@ class ControlAlarm {
         }
     }
 
-    fun setAlarmTime(hour: Int, min: Int, sec: Int = 0) {
+    fun setAlarmTime(hour: Int, min: Int, sec: Int = 0): Calendar {
 
         val calendar: Calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
@@ -42,7 +42,7 @@ class ControlAlarm {
             alarmIntent
         )
 
-        Log.d("sjk", "set Alarm")
+        return calendar
     }
 
     fun cancelAlarm() {

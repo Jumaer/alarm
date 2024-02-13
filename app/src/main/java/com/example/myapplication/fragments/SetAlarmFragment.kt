@@ -12,6 +12,8 @@ import com.example.myapplication.AlarmActivity
 import com.example.myapplication.alarm.ControlAlarm
 import com.example.myapplication.constant.Constants.PERMISSIONS
 import com.example.myapplication.databinding.FragmentSetAlarmBinding
+import com.example.myapplication.remind.Reminds
+import com.example.myapplication.remind.SharedPrefUtil
 
 
 class SetAlarmFragment : Fragment() {
@@ -76,6 +78,10 @@ class SetAlarmFragment : Fragment() {
 
     private fun setAlarmOnClock() {
         (activity as AlarmActivity).createNotificationChanel()
-        context?.let { ControlAlarm(it).setAlarmTime(hour, min) }
+        context?.let { ControlAlarm(it).setAlarmTime(hour, min).apply {
+            SharedPrefUtil(it).setAlarmTime(this.timeInMillis)
+
+            Reminds.startReminder(it)
+        } }
     }
 }
