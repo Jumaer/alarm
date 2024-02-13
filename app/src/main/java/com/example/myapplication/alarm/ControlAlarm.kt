@@ -27,6 +27,7 @@ class ControlAlarm {
     }
 
     fun setAlarmTime(hour: Int, min: Int, sec: Int = 0) {
+
         val calendar: Calendar = Calendar.getInstance().apply {
             timeInMillis = System.currentTimeMillis()
             set(Calendar.HOUR_OF_DAY, hour)
