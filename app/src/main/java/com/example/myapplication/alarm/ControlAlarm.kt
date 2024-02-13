@@ -19,7 +19,7 @@ class ControlAlarm {
         alarmIntent = Intent(context, AlarmBroadCast::class.java).let { intent ->
             PendingIntent.getBroadcast(
                 context,
-                0,
+                (0..19992).random(),
                 intent,
                 PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
             )

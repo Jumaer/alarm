@@ -1,8 +1,12 @@
 package com.example.myapplication
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
+import android.graphics.Color
+import android.media.AudioAttributes
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +46,20 @@ class AlarmActivity : AppCompatActivity() {
         val channel = NotificationChannel(CHANEL_ID,CHANEL_NAME, NotificationManager.IMPORTANCE_HIGH)
         channel.description = getString(R.string.chanel_alarm_manager_hint)
         getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
+
+        channel.apply {
+            lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+            enableLights(true)
+            lightColor = Color.GRAY
+            enableVibration(true)
+        }
+
+        // Register the channel with the system
+        val notificationManager = getSystemService(
+            NotificationManager::class.java
+        )
+        notificationManager.createNotificationChannel(channel)
+
     }
 
 

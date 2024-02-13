@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.media.RingtoneManager
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -22,7 +23,7 @@ import com.example.myapplication.constant.Constants.openComplete
 class AlarmBroadCast : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        Log.d("sjk","wake up")
+
         val alarmIntent = Intent(context,AlarmActivity::class.java)
         alarmIntent.putExtra(openComplete, openComplete)
         intent?.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK )
@@ -43,8 +44,6 @@ class AlarmBroadCast : BroadcastReceiver() {
 
 
         getNotificationBuilder(context,pendingIntent)?.let {
-            it.setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
-            it.setLights(Color.RED, 3000, 3000)
             nManager?.notify(NOTIFICATION_ID,
                 it.build())
             notifyWithSound(context)
