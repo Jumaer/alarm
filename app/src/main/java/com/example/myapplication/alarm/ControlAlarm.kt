@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.example.myapplication.broadcast.AlarmBroadCast
+import com.example.myapplication.remind.SharedPrefUtil
 import java.util.Calendar
 
 class ControlAlarm {
@@ -19,7 +20,7 @@ class ControlAlarm {
         alarmIntent = Intent(context, AlarmBroadCast::class.java).let { intent ->
             PendingIntent.getBroadcast(
                 context,
-                (0..19992).random(),
+                0,
                 intent,
                 PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
             )
